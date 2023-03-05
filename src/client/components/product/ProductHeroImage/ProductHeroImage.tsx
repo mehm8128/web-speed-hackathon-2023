@@ -19,7 +19,6 @@ async function loadImageAsDataURL(url: string): Promise<string> {
     locateFile: () => CanvasKitWasmUrl,
   });
 
-  console.log(url);
   // 画像を読み込む
   const data = await fetch(url).then((res) => res.arrayBuffer());
   const image = CanvasKit.MakeImageFromEncoded(data);
