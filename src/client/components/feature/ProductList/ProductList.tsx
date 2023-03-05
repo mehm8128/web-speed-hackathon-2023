@@ -9,18 +9,19 @@ import { ProductListSlider } from '../ProductListSlider';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
+  index: number;
 };
 
-export const ProductList: FC<Props> = memo(({ featureSection }) => {
+export const ProductList: FC<Props> = memo(({ featureSection, index }) => {
   return (
     <GetDeviceType>
       {({ deviceType }) => {
         switch (deviceType) {
           case DeviceType.DESKTOP: {
-            return <ProductListSlider featureSection={featureSection} />;
+            return <ProductListSlider featureSection={featureSection} index2={index} />;
           }
           case DeviceType.MOBILE: {
-            return <ProductGridList featureSection={featureSection} />;
+            return <ProductGridList featureSection={featureSection} index={index} />;
           }
         }
       }}

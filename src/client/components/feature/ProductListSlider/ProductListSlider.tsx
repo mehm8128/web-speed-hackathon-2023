@@ -10,9 +10,10 @@ import { useSlider } from './hooks/useSlider';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
+  index2: number;
 };
 
-export const ProductListSlider: FC<Props> = ({ featureSection }) => {
+export const ProductListSlider: FC<Props> = ({ featureSection, index2 }) => {
   const products = featureSection.items.map((item) => item.product);
 
   const { containerElementRef, setSlideIndex, slideIndex, visibleItemCount } = useSlider({
@@ -39,7 +40,7 @@ export const ProductListSlider: FC<Props> = ({ featureSection }) => {
                   [styles.item__hidden()]: hidden,
                 })}
               >
-                <ProductCard product={product} />
+                <ProductCard isLazy={index2 < 3} product={product} />
               </li>
             );
           })}

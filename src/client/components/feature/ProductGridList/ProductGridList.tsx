@@ -7,9 +7,10 @@ import * as styles from './ProductGridList.styles';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
+  index: number;
 };
 
-export const ProductGridList: FC<Props> = ({ featureSection }) => {
+export const ProductGridList: FC<Props> = ({ featureSection, index }) => {
   const products = featureSection.items.map((item) => item.product);
 
   return (
@@ -17,7 +18,7 @@ export const ProductGridList: FC<Props> = ({ featureSection }) => {
       {products.map((product) => {
         return (
           <li key={product.id} className={styles.cardListItem()}>
-            <ProductCard product={product} />
+            <ProductCard isLazy={index < 3} product={product} />
           </li>
         );
       })}

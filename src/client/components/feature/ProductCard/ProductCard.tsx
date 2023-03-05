@@ -11,10 +11,11 @@ import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 import * as styles from './ProductCard.styles';
 
 type Props = {
+  isLazy: boolean;
   product: ProductFragmentResponse;
 };
 
-export const ProductCard: FC<Props> = ({ product }) => {
+export const ProductCard: FC<Props> = ({ isLazy, product }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
   const { activeOffer } = useActiveOffer(product);
@@ -26,7 +27,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         {thumbnailFile ? (
           <div className={styles.image()}>
             <AspectRatio ratioHeight={9} ratioWidth={16}>
-              <Image height={126} src={thumbnailFile.filename} width={224} />
+              <Image height={126} loading={isLazy ? 'lazy' : undefined} src={thumbnailFile.filename} width={224} />
             </AspectRatio>
           </div>
         ) : null}

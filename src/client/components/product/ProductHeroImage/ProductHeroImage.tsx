@@ -27,12 +27,7 @@ async function loadImageAsDataURL(url: string): Promise<string> {
     return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
   }
 
-  // 画像を Canvas に描画して Data URL を生成する
-  const canvas = CanvasKit.MakeCanvas(image.width(), image.height());
-  const ctx = canvas.getContext('2d');
-  // @ts-expect-error ...
-  ctx?.drawImage(image, 0, 0);
-  return canvas.toDataURL();
+  return url;
 }
 
 type Props = {
