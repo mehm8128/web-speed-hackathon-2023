@@ -33,7 +33,7 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
-    if (zipCode.length !== 7) return;
+    if (!(zipCode.length === 6 || zipCode.length === 8)) return;
     const address = [...(zipcodeJa[zipCode]?.address ?? [])];
     const prefecture = address.shift();
     const city = address.join(' ');
