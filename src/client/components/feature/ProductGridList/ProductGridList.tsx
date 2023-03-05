@@ -15,10 +15,10 @@ export const ProductGridList: FC<Props> = ({ featureSection, index }) => {
 
   return (
     <ul className={styles.cardList()}>
-      {products.map((product) => {
+      {products.map((product, i) => {
         return (
           <li key={product.id} className={styles.cardListItem()}>
-            <ProductCard isLazy={index < 3} product={product} />
+            <ProductCard isLazy={index < 3 || i > 6} product={product} />
           </li>
         );
       })}

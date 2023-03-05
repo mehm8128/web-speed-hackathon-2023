@@ -40,7 +40,7 @@ export const ProductListSlider: FC<Props> = ({ featureSection, index2 }) => {
                   [styles.item__hidden()]: hidden,
                 })}
               >
-                <ProductCard isLazy={index2 < 3} product={product} />
+                <ProductCard isLazy={index2 < 3 || hidden} product={product} />
               </li>
             );
           })}
