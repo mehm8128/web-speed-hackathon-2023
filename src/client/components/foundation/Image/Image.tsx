@@ -14,7 +14,7 @@ export const Image: FC<Props> = ({ fill, ...rest }) => {
         [styles.container__fill()]: fill === true,
       })}
       {...rest}
-      src={rest.src?.replace('jpg', 'webp')}
+      src={rest.src?.replace('.jpg', '.webp')}
     />
   );
 };

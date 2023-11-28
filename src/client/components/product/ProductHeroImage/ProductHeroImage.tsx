@@ -42,7 +42,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
     if (thumbnailFile == null) {
       return;
     }
-    setImageDataUrl(thumbnailFile.filename.replace('jpg', 'webp'));
+    setImageDataUrl(thumbnailFile.filename.replace('.jpg', '.webp'));
   }, [thumbnailFile]);
 
   if (imageDataUrl === undefined) {
