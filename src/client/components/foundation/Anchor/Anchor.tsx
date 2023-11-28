@@ -1,11 +1,12 @@
 import type { ComponentProps, FC } from 'react';
 
 import * as styles from './Anchor.styles';
+import { Link } from 'react-router-dom';
 
-type Props = Omit<ComponentProps<'a'>, 'className'>;
+type Props = Omit<ComponentProps<typeof Link>, 'className'>;
 
-export const Anchor: FC<Props> = ({ children, href, ...rest }) => (
-  <a className={styles.container()} href={href} {...rest}>
+export const Anchor: FC<Props> = ({ children, to, ...rest }) => (
+  <Link className={styles.container()} to={to} {...rest}>
     {children}
-  </a>
+  </Link>
 );

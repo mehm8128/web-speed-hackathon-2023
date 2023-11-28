@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
 import { Anchor } from '../../foundation/Anchor';
-import { FaShoppingCart,FaUser } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { Image } from '../../foundation/Image';
 
 import * as styles from './Header.styles';
@@ -14,13 +14,13 @@ export const Header: FC = () => {
 
   return (
     <header className={styles.container()}>
-      <Anchor href="/">
+      <Anchor to="/">
         <div className={styles.logo()}>
           <Image src="/icons/logo.svg" />
         </div>
       </Anchor>
       {isAuthUser ? (
-        <Anchor data-testid="navigate-order" href={'/order'}>
+        <Anchor data-testid="navigate-order" to={'/order'}>
           <div className={styles.orderLink()}>
             <FaShoppingCart color="#222222" size={20} />
           </div>
