@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
 
-import { FaArrowLeft,FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 import * as styles from './ProductListSlideButton.styles';
 
@@ -26,11 +26,7 @@ export const ProductListSlideButton: FC<Props> = ({ arrowType, disabled, onClick
       disabled={disabled}
       onClick={onClick}
     >
-      {arrowType === ArrowType.LEFT ? (
-        <FaArrowLeft color="#222222" />
-      ) : (
-        <FaArrowRight color="#222222" />
-      )}
+      {arrowType === ArrowType.LEFT ? <FaArrowLeft color="#222222" /> : <FaArrowRight color="#222222" />}
     </button>
   );
 };

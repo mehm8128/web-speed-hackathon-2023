@@ -33,8 +33,8 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
 
     const zipCode = event.target.value;
     if (zipCode.length !== 7) return;
-    const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipCode}`)
-    const address = await res.json()
+    const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipCode}`);
+    const address = await res.json();
     const prefecture = address.results[0].address1;
     const city = address.results[0].address2 + address.results[0].address3;
 
