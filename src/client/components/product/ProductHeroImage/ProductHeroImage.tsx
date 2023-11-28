@@ -1,5 +1,3 @@
-import CanvasKitInit from 'canvaskit-wasm';
-import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
 import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
@@ -13,22 +11,22 @@ import { WidthRestriction } from '../../foundation/WidthRestriction';
 
 import * as styles from './ProductHeroImage.styles';
 
-async function loadImageAsDataURL(url: string): Promise<string> {
-  const CanvasKit = await CanvasKitInit({
-    // WASM ファイルの URL を渡す
-    locateFile: () => CanvasKitWasmUrl,
-  });
+// async function loadImageAsDataURL(url: string): Promise<string> {
+//   const CanvasKit = await CanvasKitInit({
+//     // WASM ファイルの URL を渡す
+//     locateFile: () => CanvasKitWasmUrl,
+//   });
 
-  // 画像を読み込む
-  const data = await fetch(url).then((res) => res.arrayBuffer());
-  const image = CanvasKit.MakeImageFromEncoded(data);
-  if (image == null) {
-    // 読み込みに失敗したとき、透明な 1x1 GIF の Data URL を返却する
-    return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-  }
+//   // 画像を読み込む
+//   const data = await fetch(url).then((res) => res.arrayBuffer());
+//   const image = CanvasKit.MakeImageFromEncoded(data);
+//   if (image == null) {
+//     // 読み込みに失敗したとき、透明な 1x1 GIF の Data URL を返却する
+//     return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+//   }
 
-  return url;
-}
+//   return url;
+// }
 
 type Props = {
   product: ProductFragmentResponse;
@@ -44,7 +42,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
     if (thumbnailFile == null) {
       return;
     }
-    loadImageAsDataURL(thumbnailFile.filename.replace('jpg', 'webp')).then((dataUrl) => setImageDataUrl(dataUrl));
+    setImageDataUrl(thumbnailFile.filename.replace('jpg', 'webp'));
   }, [thumbnailFile]);
 
   if (imageDataUrl === undefined) {
